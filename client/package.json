@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "proxy" : "http://localhost:8000",
   "dependencies": {
     "@next/font": "13.1.1",
     "dotenv": "^16.0.3",

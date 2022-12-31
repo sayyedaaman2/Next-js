@@ -54,14 +54,14 @@ function User({ session }) {
           Sign Out
         </button>
       </div>
-      <div className="flex justify-center">
+      {/* <div className="flex justify-center">
         <Link
           href={"/profile"}
           className="mt-5 px-10 py-1 rounded-sm bg-indigo-100 text-grey-50"
         >
           Profile
         </Link>
-      </div>
+      </div> */}
     </main>
   );
 }
