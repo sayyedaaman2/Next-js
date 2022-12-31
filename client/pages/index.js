@@ -5,8 +5,11 @@ import { useState } from "react";
 import { useSession ,getSession, signOut} from "next-auth/react";
 
 export default function Home() {
-  const { data: session } = useSession();
+  const { data: session,  } = useSession();
+  const Session = useSession();
 
+  console.log('sessionuser ' ,session);
+  console.log("STate",Session);
   return (
     <>
       <Head>
@@ -67,8 +70,8 @@ function User({ session }) {
 }
 
 export async function getServerSideProps({req}){
-  const session = await getSession({req})
-
+  const session = await getSession(req.sessionID)
+  console.log('###SESSION_ID ', req.sessionID);
   if(!session){
     return{
       redirect:{

@@ -3,21 +3,22 @@ const next = require("next");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const session = require("express-session");
+const cookieParser = require('cookie-parser')
 const mongoose = require("mongoose");
 const passport = require("passport");
 
 const passportSetup = require("./config/passportSetup");
 const serverConfig = require("./config/server.config");
 const dbConfig = require("./config/db.config");
+const { default: nextAuth } = require("next-auth");
 const dev = process.env.NODE_ENV !== "production";
 
 const nextApp = next({ dev });
 const handle = nextApp.getRequestHandler(); //handle link
-
 nextApp.prepare().then(() => {
   const app = express();
   app.use(bodyParser.json());
-
+  app.use(cookieParser());
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(
     cors({
@@ -26,12 +27,15 @@ nextApp.prepare().then(() => {
   );
   app.use(
     session({
-      secret: "secret",
+      key : "auth",
+      secret: "secret-key",
       resave: false,
       saveUninitialized: true,
+      cookie : {
+        expires : 60000
+      }
     })
   );
-
   app.use(passport.initialize());
   app.use(passport.session());
 

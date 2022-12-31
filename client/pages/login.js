@@ -10,7 +10,7 @@ export default function Login() {
 
   //google handler function
   async function handleGoggleSignin() {
-    // signIn("google", { callbackUrl: "http://localhost:3000" });
+    // signIn("google", { callbackUrl: "/" });
   }
 
   return (
@@ -32,7 +32,7 @@ export default function Login() {
         <form className="flex flex-col gap-5">
           {/* login buttons */}
 
-          <div className="input-button">
+          {/* <div className="input-button">
             <button
               type="button"
               className={styles.button_custom}
@@ -41,7 +41,7 @@ export default function Login() {
               Sign In with Google{" "}
               <Image src={"/assets/google.svg"} width="20" height={20}></Image>
             </button>
-          </div>
+          </div> */}
          
           <div className="input-button">
             <Link href="/register" className={styles.button_custom}>

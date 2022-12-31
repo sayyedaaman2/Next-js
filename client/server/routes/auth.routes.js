@@ -8,9 +8,13 @@ module.exports = (app) => {
     })
   );
   app.get("/test",(req,res)=>{
-    console.log("test", req);
-    return res.send("Testing server api");
+    console.log("test", req.session);
+    return res.send("Testing server api",req.session);
   })
   
-  app.get("/api/auth/google/callback", passport.authenticate("google",{failureRedirect : "/login" ,successRedirect : "/"}))
+  app.get("/api/auth/google/callback", passport.authenticate("google",{ failureRedirect : "/login", successRedirect : "/"}),(req,res)=>{
+    req.session.user = req.user;
+    req.session.save();
+    res.send(req.session);
+  })
 };

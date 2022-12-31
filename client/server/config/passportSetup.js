@@ -4,7 +4,7 @@ const {googleClient,googleSecret,callBackUrl} = require('./auth.config')
 const User = require('../models/user.model');
 
 passport.serializeUser((user, done) => {
-    console.log('serializeUser 1',user);
+    // console.log('serializeUser 1',user);
     done(null, user.id);
 });
 
