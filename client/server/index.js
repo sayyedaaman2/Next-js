@@ -12,7 +12,7 @@ const dbConfig = require("./config/db.config");
 const dev = process.env.NODE_ENV !== "production";
 
 const nextApp = next({ dev });
-const handle = nextApp.getRequestHandler();
+const handle = nextApp.getRequestHandler(); //handle link
 
 nextApp.prepare().then(() => {
   const app = express();
@@ -47,11 +47,12 @@ nextApp.prepare().then(() => {
 
   require("./routes/auth.routes")(app);
 
-  app.get("/", (req, res) => {
-    // console.log("req",req);
-    // res.send("Go on http:localhost:8000/auth/google");
-    return res.redirect("/login");
-  });
+  app.get('*',(req,res)=>{
+    return handle(req,res);
+  })
+  app.get('/hello',(ree, res)=>{
+    return handle(req,res);
+  })
 
   require("./routes/auth.routes")(app);
   app.listen(serverConfig.PORT, () => {
