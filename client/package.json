@@ -3,12 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": " node server/index.js",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
-  "proxy" : "http://localhost:8000",
   "dependencies": {
     "@next/font": "13.1.1",
     "dotenv": "^16.0.3",
