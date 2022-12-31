@@ -10,7 +10,7 @@ export default function Login() {
 
   //google handler function
   async function handleGoggleSignin() {
-    signIn("google", { callbackUrl: "http://localhost:3000" });
+    // signIn("google", { callbackUrl: "http://localhost:3000" });
   }
 
   return (
@@ -42,9 +42,20 @@ export default function Login() {
               <Image src={"/assets/google.svg"} width="20" height={20}></Image>
             </button>
           </div>
+         
           <div className="input-button">
             <Link href="/register" className={styles.button_custom}>
               Register{" "}
+            </Link>
+          </div>
+          <div className="input-button">
+            <Link href="/test" className={styles.button_custom}>
+              Testing the Server side{" "}
+            </Link>
+          </div>
+          <div className="input-button">
+            <Link href="/auth/google" className={styles.button_custom}>
+              Passport Oauth{" "}
             </Link>
           </div>
         </form>

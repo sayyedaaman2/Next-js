@@ -50,9 +50,9 @@ nextApp.prepare().then(() => {
   app.get('*',(req,res)=>{
     return handle(req,res);
   })
-  app.get('/hello',(ree, res)=>{
-    return handle(req,res);
-  })
+  // app.get('/hello',(req, res)=>{
+  //   return handle(req,res);
+  // })
 
   require("./routes/auth.routes")(app);
   app.listen(serverConfig.PORT, () => {

@@ -7,6 +7,10 @@ module.exports = (app) => {
       scope: ["profile"],
     })
   );
+  app.get("/test",(req,res)=>{
+    console.log("test", req);
+    return res.send("Testing server api");
+  })
   
-  app.get("/api/auth/google/callback", passport.authenticate("google",{failureRedirect : "" ,successRedirect : ""}))
+  app.get("/api/auth/google/callback", passport.authenticate("google",{failureRedirect : "/login" ,successRedirect : "/"}))
 };
