@@ -4,13 +4,13 @@ import Link from "next/link";
 import styles from "../styles/Form.module.css";
 import Image from "next/image";
 import { useState } from "react";
-import { signIn, signOut } from "next-auth/react";
+import { signIn } from "next-auth/react";
 export default function Login() {
   const [show, setShow] = useState(false);
 
   //google handler function
   async function handleGoggleSignin() {
-    // signIn("google", { callbackUrl: "/" });
+    // await signIn()
   }
 
   return (

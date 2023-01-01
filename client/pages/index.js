@@ -2,14 +2,13 @@ import Head from "next/head";
 
 import Link from "next/link";
 import { useState } from "react";
-import { useSession ,getSession, signOut} from "next-auth/react";
+import { getSession ,useSession } from "next-auth/react";
+import Cookie  from 'cookie-js';
 
 export default function Home() {
-  const { data: session,  } = useSession();
-  const Session = useSession();
-
+  const { data: session, status } = useSession();
   console.log('sessionuser ' ,session);
-  console.log("STate",Session);
+  console.log("statu",status);
   return (
     <>
       <Head>
@@ -69,9 +68,11 @@ function User({ session }) {
   );
 }
 
-export async function getServerSideProps({req}){
-  const session = await getSession(req.sessionID)
-  console.log('###SESSION_ID ', req.sessionID);
+export async function getServerSideProps({req,res}){
+  const {session, sessionID} = req;
+  console.log("SESSION",session);
+  console.log("SESSIONID",sessionID);
+
   if(!session){
     return{
       redirect:{

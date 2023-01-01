@@ -3,14 +3,14 @@ const next = require("next");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const session = require("express-session");
-const cookieParser = require('cookie-parser')
+const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
 const passport = require("passport");
 
 const passportSetup = require("./config/passportSetup");
 const serverConfig = require("./config/server.config");
 const dbConfig = require("./config/db.config");
-const { default: nextAuth } = require("next-auth");
+
 const dev = process.env.NODE_ENV !== "production";
 
 const nextApp = next({ dev });
@@ -27,13 +27,13 @@ nextApp.prepare().then(() => {
   );
   app.use(
     session({
-      key : "auth",
-      secret: "secret-key",
-      resave: false,
+      key: "auth",
+      secret: "secret-key00000000000000",
+      resave: true,
       saveUninitialized: true,
-      cookie : {
-        expires : 60000
-      }
+      cookie: {
+        maxAge: 1000 * 60 * 60 * 24,
+      },
     })
   );
   app.use(passport.initialize());
@@ -51,9 +51,9 @@ nextApp.prepare().then(() => {
 
   require("./routes/auth.routes")(app);
 
-  app.get('*',(req,res)=>{
-    return handle(req,res);
-  })
+  app.get("*", (req, res) => {
+    return handle(req, res);
+  });
   // app.get('/hello',(req, res)=>{
   //   return handle(req,res);
   // })

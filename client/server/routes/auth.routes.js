@@ -12,7 +12,7 @@ module.exports = (app) => {
     return res.send("Testing server api",req.session);
   })
   
-  app.get("/api/auth/google/callback", passport.authenticate("google",{ failureRedirect : "/login", successRedirect : "/"}),(req,res)=>{
+  app.get("/api/auth/google/callback", passport.authenticate("google",{ session: true, failureRedirect : "/login", }),(req,res)=>{
     req.session.user = req.user;
     req.session.save();
     res.send(req.session);

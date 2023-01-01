@@ -4,13 +4,15 @@ const {googleClient,googleSecret,callBackUrl} = require('./auth.config')
 const User = require('../models/user.model');
 
 passport.serializeUser((user, done) => {
-    // console.log('serializeUser 1',user);
+    console.log('serializeUser 1');
+    // console.log("user serialize",user);
     done(null, user.id);
 });
 
 passport.deserializeUser((id, done) => {
-    console.log("deserializeUser 2",id);
+    console.log("deserializeUser 2");
     User.findById(id).then((user) => {
+        // console.log('inside the the findById',user);
         done(null, user);
     }).catch((err)=>{
         done(err,id);
@@ -23,7 +25,7 @@ passport.use(
         clientSecret: googleSecret,
         callbackURL: '/api/auth/google/callback'
     }, async (accessToken, refreshToken, profile, done) => {
-        console.log(profile)
+        console.log("GoogleStrategy");
         try {
             const currentUser =  await User.findOne({googleId : profile.id});
             if(currentUser){
