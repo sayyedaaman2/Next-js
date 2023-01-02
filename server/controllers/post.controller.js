@@ -3,10 +3,14 @@ const Post = require('../models/post.model')
 exports.createPost = async (req, res)=>{
     try {
         const postData = {
-            content : req.body.content 
+            name : req.body.name,
+            email : req.body.email,
+            content : req.body.content ,
+            image : req.body.image
         }
 
         const postCreated = await Post.create(postData)
+        console.log(postCreated)
         res.status(201).send({
             message : "Successfully Created the Post",
             data : postCreated

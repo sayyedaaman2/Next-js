@@ -10,8 +10,9 @@ const dbConfig = require("./config/db.config");
 const dev = process.env.NODE_ENV !== "production";
 
 const nextApp = next({ dev });
-const handle = nextApp.getRequestHandler(); //handle link
-nextApp.prepare().then(() => {
+// const handle = nextApp.getRequestHandler(); //handle link
+// nextApp.prepare().then(() => {
+// });
   
   
   const app = express();
@@ -48,4 +49,3 @@ nextApp.prepare().then(() => {
     app.listen(serverConfig.PORT, () => {
       console.log(`Server is running on ${serverConfig.PORT}`);
     });
-  });
