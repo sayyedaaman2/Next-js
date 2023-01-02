@@ -1,29 +1,30 @@
 {
-  "name": "client",
+  "name": "authapp",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": " node server/index.js",
+    "dev": "node server/index.js",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
+  "proxy" : "http://localhost:8000",
   "dependencies": {
-    "@next/font": "13.1.1",
-    "cookie-js": "^0.0.1",
-    "dotenv": "^16.0.3",
-    "eslint": "8.30.0",
-    "eslint-config-next": "13.1.1",
-    "next": "13.1.1",
-    "next-auth": "^4.18.7",
-    "next-session": "^4.0.5",
+    "axios": "^1.2.2",
+    "bcryptjs": "^2.4.3",
+    "formik": "^2.2.9",
+    "next": "12.2.2",
+    "next-auth": "^4.10.0",
     "react": "18.2.0",
-    "react-dom": "^18.2.0",
-    "react-icons": "^4.7.1"
+    "react-dom": "18.2.0",
+    "react-icons": "^4.4.0"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.13",
-    "postcss": "^8.4.20",
-    "tailwindcss": "^3.2.4"
+    "autoprefixer": "^10.4.7",
+    "eslint": "8.19.0",
+    "eslint-config-next": "12.2.2",
+    "mongoose": "^6.4.6",
+    "postcss": "^8.4.14",
+    "tailwindcss": "^3.1.6"
   }
 }
