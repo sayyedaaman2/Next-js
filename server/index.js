@@ -1,5 +1,5 @@
 const express = require("express");
-const next = require("next");
+// const next = require("next");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -9,7 +9,7 @@ const dbConfig = require("./config/db.config");
 
 const dev = process.env.NODE_ENV !== "production";
 
-const nextApp = next({ dev });
+// const nextApp = next({ dev });
 // const handle = nextApp.getRequestHandler(); //handle link
 // nextApp.prepare().then(() => {
 // });

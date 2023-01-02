@@ -54,6 +54,12 @@ function User({ session, handleSignOut }) {
     });
     let data = response.data;
     console.log(data);
+    if(response.status == '201'){
+      window.alert("Successfully Send the message")
+    }else{
+      
+      window.alert("Failed")
+    }
   }
   const image = session.user.image;
   // useEffect(()=>{
